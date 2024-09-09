@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiPopups", "ImGuiPopups\ImGuiPopups.csproj", "{920E0A2D-325C-4571-AC21-9D8C9AA5C68C}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImGuiPopupsDemo", "ImGuiPopupsDemo\ImGuiPopupsDemo.csproj", "{DC399916-4AE4-4FBD-A292-CD118EC16A0D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{920E0A2D-325C-4571-AC21-9D8C9AA5C68C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{920E0A2D-325C-4571-AC21-9D8C9AA5C68C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{920E0A2D-325C-4571-AC21-9D8C9AA5C68C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{920E0A2D-325C-4571-AC21-9D8C9AA5C68C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC399916-4AE4-4FBD-A292-CD118EC16A0D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC399916-4AE4-4FBD-A292-CD118EC16A0D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC399916-4AE4-4FBD-A292-CD118EC16A0D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC399916-4AE4-4FBD-A292-CD118EC16A0D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49545032-0B44-448A-B2F7-E92C6EB6F14E}
+	EndGlobalSection
+EndGlobal
