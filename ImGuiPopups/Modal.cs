@@ -1,4 +1,4 @@
-namespace ktsu.io.ImGuiWidgets;
+namespace ktsu.io.ImGuiPopups;
 
 using ImGuiNET;
 using ktsu.io.CaseConverter;
