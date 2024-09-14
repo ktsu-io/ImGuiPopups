@@ -1,8 +1,8 @@
 namespace ktsu.io.ImGuiPopupsDemo;
 
 using ImGuiNET;
-using ktsu.io.ImGuiApp;
-using ktsu.io.ImGuiPopups;
+using ktsu.ImGuiApp;
+using ktsu.ImGuiPopups;
 
 internal class ImGuiPopupsDemo
 {
