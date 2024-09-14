@@ -1,4 +1,4 @@
-namespace ktsu.io.ImGuiPopups;
+namespace ktsu.ImGuiPopups;
 
 public partial class ImGuiPopups
 {
