@@ -90,14 +90,14 @@ public partial class ImGuiPopups
 				}
 			}
 			ImGui.TextUnformatted($"{CurrentDirectory}{Path.DirectorySeparatorChar}{Glob}");
-			ImGui.BeginChild("FilesystemBrowser", new(500, 400), border: false);
+			ImGui.BeginChild("FilesystemBrowser", new(500, 400), ImGuiChildFlags.None);
 			ImGui.BeginTable(nameof(FilesystemBrowser), 1, ImGuiTableFlags.Borders);
 			ImGui.TableSetupColumn("Path", ImGuiTableColumnFlags.WidthStretch, 40);
 			//ImGui.TableSetupColumn("Size", ImGuiTableColumnFlags.None, 3);
 			//ImGui.TableSetupColumn("Modified", ImGuiTableColumnFlags.None, 3);
 			ImGui.TableHeadersRow();
 
-			var flags = ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick | ImGuiSelectableFlags.DontClosePopups;
+			var flags = ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick | ImGuiSelectableFlags.NoAutoClosePopups;
 			ImGui.TableNextRow();
 			ImGui.TableNextColumn();
 			if (ImGui.Selectable("..", false, flags))
