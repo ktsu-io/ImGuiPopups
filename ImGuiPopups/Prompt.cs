@@ -1,4 +1,4 @@
-namespace ktsu.io.ImGuiPopups;
+namespace ktsu.ImGuiPopups;
 
 using System;
 using System.Collections.Generic;

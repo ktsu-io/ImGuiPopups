@@ -1,4 +1,4 @@
-namespace ktsu.io.ImGuiPopups;
+namespace ktsu.ImGuiPopups;
 
 using System;
 using System.Collections.ObjectModel;
@@ -6,8 +6,8 @@ using System.IO;
 using System.Linq;
 using System.Text.Json.Serialization;
 using ImGuiNET;
-using ktsu.io.Extensions;
-using ktsu.io.StrongPaths;
+using ktsu.Extensions;
+using ktsu.StrongPaths;
 using Microsoft.Extensions.FileSystemGlobbing;
 
 public partial class ImGuiPopups

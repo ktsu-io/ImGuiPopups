@@ -1,9 +1,9 @@
-namespace ktsu.io.ImGuiPopups;
+namespace ktsu.ImGuiPopups;
 
 using System;
 using ImGuiNET;
-using ktsu.io.CaseConverter;
-using ktsu.io.FuzzySearch;
+using ktsu.CaseConverter;
+using ktsu.FuzzySearch;
 
 public partial class ImGuiPopups
 {

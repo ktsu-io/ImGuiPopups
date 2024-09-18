@@ -1,7 +1,7 @@
-namespace ktsu.io.ImGuiPopups;
+namespace ktsu.ImGuiPopups;
 
 using ImGuiNET;
-using ktsu.io.CaseConverter;
+using ktsu.CaseConverter;
 
 public partial class ImGuiPopups
 {
