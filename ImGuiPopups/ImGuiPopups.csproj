@@ -3,7 +3,7 @@
   <ItemGroup>
     <PackageReference Include="ImGui.NET" Version="1.91.0.1" />
     <PackageReference Include="ktsu.Extensions" Version="1.0.10" />
-    <PackageReference Include="ktsu.CaseConverter" Version="1.0.4" />
+    <PackageReference Include="ktsu.CaseConverter" Version="1.0.5" />
     <PackageReference Include="ktsu.FuzzySearch" Version="1.0.0-alpha.4" />
     <PackageReference Include="ktsu.ImGuiStyler" Version="1.0.0-alpha.20" />
     <PackageReference Include="ktsu.ScopedAction" Version="1.0.0-alpha.6" />
