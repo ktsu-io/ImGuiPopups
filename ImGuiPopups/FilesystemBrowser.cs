@@ -90,67 +90,70 @@ public partial class ImGuiPopups
 				}
 			}
 			ImGui.TextUnformatted($"{CurrentDirectory}{Path.DirectorySeparatorChar}{Glob}");
-			ImGui.BeginChild("FilesystemBrowser", new(500, 400), ImGuiChildFlags.None);
-			ImGui.BeginTable(nameof(FilesystemBrowser), 1, ImGuiTableFlags.Borders);
-			ImGui.TableSetupColumn("Path", ImGuiTableColumnFlags.WidthStretch, 40);
-			//ImGui.TableSetupColumn("Size", ImGuiTableColumnFlags.None, 3);
-			//ImGui.TableSetupColumn("Modified", ImGuiTableColumnFlags.None, 3);
-			ImGui.TableHeadersRow();
-
-			var flags = ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick | ImGuiSelectableFlags.NoAutoClosePopups;
-			ImGui.TableNextRow();
-			ImGui.TableNextColumn();
-			if (ImGui.Selectable("..", false, flags))
+			if (ImGui.BeginChild("FilesystemBrowser", new(500, 400), ImGuiChildFlags.None))
 			{
-				if (ImGui.IsMouseDoubleClicked(0))
+				if (ImGui.BeginTable(nameof(FilesystemBrowser), 1, ImGuiTableFlags.Borders))
 				{
-					string? newPath = Path.GetDirectoryName(CurrentDirectory.WeakString.Trim(Path.DirectorySeparatorChar));
-					if (newPath is not null)
+					ImGui.TableSetupColumn("Path", ImGuiTableColumnFlags.WidthStretch, 40);
+					//ImGui.TableSetupColumn("Size", ImGuiTableColumnFlags.None, 3);
+					//ImGui.TableSetupColumn("Modified", ImGuiTableColumnFlags.None, 3);
+					ImGui.TableHeadersRow();
+
+					var flags = ImGuiSelectableFlags.SpanAllColumns | ImGuiSelectableFlags.AllowDoubleClick | ImGuiSelectableFlags.NoAutoClosePopups;
+					ImGui.TableNextRow();
+					ImGui.TableNextColumn();
+					if (ImGui.Selectable("..", false, flags))
 					{
-						CurrentDirectory = (AbsoluteDirectoryPath)newPath;
-						RefreshContents();
-					}
-				}
-			}
-
-			foreach (var path in CurrentContents.OrderBy(p => p is not AbsoluteDirectoryPath).ThenBy(p => p).ToCollection())
-			{
-				ImGui.TableNextRow();
-				ImGui.TableNextColumn();
-				var directory = path as AbsoluteDirectoryPath;
-				var file = path as AbsoluteFilePath;
-				string displayPath = path.WeakString;
-				displayPath = displayPath.RemovePrefix(CurrentDirectory).Trim(Path.DirectorySeparatorChar);
-
-				if (directory is not null)
-				{
-					displayPath += Path.DirectorySeparatorChar;
-				}
-
-				if (ImGui.Selectable(displayPath, ChosenItem == path, flags))
-				{
-					if (directory is not null)
-					{
-						ChosenItem = directory;
 						if (ImGui.IsMouseDoubleClicked(0))
 						{
-							CurrentDirectory = directory;
-							RefreshContents();
+							string? newPath = Path.GetDirectoryName(CurrentDirectory.WeakString.Trim(Path.DirectorySeparatorChar));
+							if (newPath is not null)
+							{
+								CurrentDirectory = (AbsoluteDirectoryPath)newPath;
+								RefreshContents();
+							}
 						}
 					}
-					else if (file is not null)
+
+					foreach (var path in CurrentContents.OrderBy(p => p is not AbsoluteDirectoryPath).ThenBy(p => p).ToCollection())
 					{
-						ChosenItem = file;
-						FileName = file.FileName;
-						if (ImGui.IsMouseDoubleClicked(0))
+						ImGui.TableNextRow();
+						ImGui.TableNextColumn();
+						var directory = path as AbsoluteDirectoryPath;
+						var file = path as AbsoluteFilePath;
+						string displayPath = path.WeakString;
+						displayPath = displayPath.RemovePrefix(CurrentDirectory).Trim(Path.DirectorySeparatorChar);
+
+						if (directory is not null)
 						{
-							ChooseItem();
+							displayPath += Path.DirectorySeparatorChar;
+						}
+
+						if (ImGui.Selectable(displayPath, ChosenItem == path, flags))
+						{
+							if (directory is not null)
+							{
+								ChosenItem = directory;
+								if (ImGui.IsMouseDoubleClicked(0))
+								{
+									CurrentDirectory = directory;
+									RefreshContents();
+								}
+							}
+							else if (file is not null)
+							{
+								ChosenItem = file;
+								FileName = file.FileName;
+								if (ImGui.IsMouseDoubleClicked(0))
+								{
+									ChooseItem();
+								}
+							}
 						}
 					}
+					ImGui.EndTable();
 				}
 			}
-
-			ImGui.EndTable();
 			ImGui.EndChild();
 
 			if (BrowserMode == FilesystemBrowserMode.Save)
