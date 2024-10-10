@@ -85,7 +85,7 @@ Richard McClintock, a Latin scholar, is credited with discovering the source beh
 Cicero’s “De Finibus Bonorum et Malorum” – 45 BC""";
 			#endregion
 
-			popupMessageOK.Open("Wall Of Text", message, true, new Vector2(ImGui.GetContentRegionAvail().X * 0.75f, -1.0f));
+			popupMessageOK.Open("Wall Of Text", message, ImGuiPopups.PromptTextLayoutType.Wrapped, new Vector2(ImGui.GetContentRegionAvail().X * 0.75f, -1.0f));
 		}
 
 		popupSearchableList.ShowIfOpen();

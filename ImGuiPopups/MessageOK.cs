@@ -21,14 +21,14 @@ public partial class ImGuiPopups
 		/// <param name="title">The title of the popup window.</param>
 		/// <param name="message">The message to show.</param>
 		/// <param name="customSize">Custom size of the popup.</param>
-		public void Open(string title, string message, Vector2 customSize) => Open(title, message, wrapText: false, customSize);
+		public void Open(string title, string message, Vector2 customSize) => Open(title, message, PromptTextLayoutType.Unformatted, customSize);
 		/// <summary>
 		/// Open the popup and set the title and message.
 		/// </summary>
 		/// <param name="title">The title of the popup window.</param>
 		/// <param name="message">The message to show.</param>
-		/// <param name="wrapText">Should the text be wrapped.</param>
+		/// <param name="textLayoutType">Which text layout method should be used.</param>
 		/// <param name="size">Custom size of the popup.</param>
-		public void Open(string title, string message, bool wrapText, Vector2 size) => Open(title, message, new() { { "OK", null } }, wrapText, size);
+		public void Open(string title, string message, PromptTextLayoutType textLayoutType, Vector2 size) => Open(title, message, new() { { "OK", null } }, textLayoutType, size);
 	}
 }

@@ -8,6 +8,12 @@ using ImGuiNET;
 
 public partial class ImGuiPopups
 {
+	public enum PromptTextLayoutType
+	{
+		Unformatted,
+		Wrapped
+	}
+
 	/// <summary>
 	/// A class for displaying a prompt popup window.
 	/// </summary>
@@ -16,7 +22,7 @@ public partial class ImGuiPopups
 		private Modal Modal { get; } = new();
 		private string Label { get; set; } = string.Empty;
 		private Dictionary<string, Action?> Buttons { get; set; } = [];
-		private bool WrapText { get; set; }
+		private PromptTextLayoutType TextLayoutType { get; set; }
 
 		/// <summary>
 		/// Open the popup and set the title, label, and button definitions.
@@ -32,25 +38,25 @@ public partial class ImGuiPopups
 		/// <param name="label">The label of the input field.</param>
 		/// <param name="buttons">The names and actions of the buttons.</param>
 		/// <param name="customSize">Custom size of the popup.</param>
-		public virtual void Open(string title, string label, Dictionary<string, Action?> buttons, Vector2 customSize) => Open(title, label, buttons, wrapText: false, customSize);
+		public virtual void Open(string title, string label, Dictionary<string, Action?> buttons, Vector2 customSize) => Open(title, label, buttons, textLayoutType: PromptTextLayoutType.Unformatted, customSize);
 		/// <summary>
 		/// Open the popup and set the title, label, and button definitions.
 		/// </summary>
 		/// <param name="title">The title of the popup window.</param>
 		/// <param name="label">The label of the input field.</param>
 		/// <param name="buttons">The names and actions of the buttons.</param>
-		/// <param name="wrapText">Should ImGui.TextWrapped be called.</param>
+		/// <param name="textLayoutType">Which text layout method should be used.</param>
 		/// <param name="size">Custom size of the popup.</param>
-		public void Open(string title, string label, Dictionary<string, Action?> buttons, bool wrapText, Vector2 size)
+		public void Open(string title, string label, Dictionary<string, Action?> buttons, PromptTextLayoutType textLayoutType, Vector2 size)
 		{
 			// Wrapping text without a custom size will result in an incorrectly sized
 			// popup as the text will wrap based on the popup and the popup will size
 			// based on the text.
-			Debug.Assert(!wrapText || (size != Vector2.Zero));
+			Debug.Assert((textLayoutType == PromptTextLayoutType.Unformatted) || (size != Vector2.Zero));
 
 			Label = label;
 			Buttons = buttons;
-			WrapText = wrapText;
+			TextLayoutType = textLayoutType;
 			Modal.Open(title, ShowContent, size);
 		}
 
@@ -59,13 +65,18 @@ public partial class ImGuiPopups
 		/// </summary>
 		private void ShowContent()
 		{
-			if (WrapText)
+			switch (TextLayoutType)
 			{
-				ImGui.TextWrapped(Label);
-			}
-			else
-			{
-				ImGui.TextUnformatted(Label);
+				case PromptTextLayoutType.Unformatted:
+					ImGui.TextUnformatted(Label);
+					break;
+
+				case PromptTextLayoutType.Wrapped:
+					ImGui.TextWrapped(Label);
+					break;
+
+				default:
+					throw new NotImplementedException();
 			}
 			ImGui.NewLine();
 
